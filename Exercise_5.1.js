@@ -1,21 +1,29 @@
 const readLineSync = require("readline-sync");
 
-
-
 let askTvSerie = () => {
+
+  let castMembers = [];
+
   let name = readLineSync.question("Enter the name of your favorite TV serie: ");
   let productYear = readLineSync.question("Enter the year in which your favorite series was produced: ");
-  let numCastMembers = readLineSync.question("How many members of the distribution do you want to enter?")
+  let userAnswer;
+  do {
+    let castMember = readLineSync.question("Enter a name of a cast member: ");
+    castMembers.push(castMember);
+    userAnswer = readLineSync.question("Do you want to add any some cast member? (yes or no): ")
+  } while (userAnswer != "no");
 
-  function tvSerie(name, productYear, numCastMembers){
+  function TvSerie(name, productYear, castMembers) {
     this.name = name;
     this.productYear = productYear;
-    this.numCastMembers = [];
+    this.castMembers = castMembers;
   }
 
-  let userSerie = new tvSerie(name, productYear);
+  let userSerie = new TvSerie(name, productYear, castMembers);
 
-  console.log(userSerie);
+  let userSerieInJson = JSON.stringify(userSerie);
+
+  console.log(userSerieInJson);
 
 }
- askTvSerie();
+askTvSerie();
