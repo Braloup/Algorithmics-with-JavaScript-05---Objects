@@ -1,4 +1,4 @@
-# Algorithmics-with-JavaScript-05---Objects
+# Algorithmics with JavaScript 05 - Objects
 
 ## Objects are some other type of data structure in JavaScript.
 
