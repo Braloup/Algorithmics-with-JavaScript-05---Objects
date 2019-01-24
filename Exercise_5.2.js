@@ -6,7 +6,7 @@ let askTvSerie = () => {
 
   let name = readLineSync.question("Enter the name of your favorite TV serie: ");
   let productYear = readLineSync.question("Enter the year in which your favorite series was produced: ");
-  
+
   let userAnswer;
 
   do {
@@ -25,10 +25,14 @@ let askTvSerie = () => {
 
   let userSerieInJson = JSON.stringify(userSerie);
 
-  return(userSerieInJson);
+  console.log(userSerieInJson);
+  console.log(randomizeCast(userSerieInJson));
+}
+
+let randomizeCast = (userSerieInJson) => {
+
+  return userSerieInJson;
 
 }
 
-console.log(askTvSerie());
-
-let randomizeCast
+askTvSerie();
