@@ -1,8 +1,8 @@
 const readLineSync = require("readline-sync");
 
-let askTvSerie = () => {
+let castMembers = [];
 
-  let castMembers = [];
+let askTvSerie = () => {
 
   let name = readLineSync.question("Enter the name of your favorite TV serie: ");
   let productYear = readLineSync.question("Enter the year in which your favorite series was produced: ");
@@ -26,12 +26,29 @@ let askTvSerie = () => {
   let userSerieInJson = JSON.stringify(userSerie);
 
   console.log(userSerieInJson);
-  console.log(randomizeCast(userSerieInJson));
+  console.log(randomizeCast(userSerie.castMembers));
 }
 
-let randomizeCast = (userSerieInJson) => {
+let randomizeCast = (castMembers) => {
 
-  return userSerieInJson;
+  let currentIndex = castMembers.length;
+
+  	let temporaryValue;
+    let randomIndex;
+
+  	// While there remain elements to shuffle...
+  	while (0 !== currentIndex) {
+  		// Pick a remaining element...
+  		randomIndex = Math.floor(Math.random() * currentIndex);
+  		currentIndex -= 1;
+
+  		// And swap it with the current element.
+  		temporaryValue = castMembers[currentIndex];
+  		castMembers[currentIndex] = castMembers[randomIndex];
+  		castMembers[randomIndex] = temporaryValue;
+  	}
+
+  	return castMembers;
 
 }
 
