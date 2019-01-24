@@ -25,7 +25,7 @@ let askTvSerie = () => {
 // Convert objet to JSON file.
   let userSerieInJson = JSON.stringify(userSerie);
   // Callback of fonction randomizeCast.
-  console.log("A random aray with the cast Members: " + randomizeCast(userSerie.castMembers));
+  console.log("A random aray with the cast Members" + randomizeCast(userSerie.castMembers));
 
   return userSerieInJson;
 
