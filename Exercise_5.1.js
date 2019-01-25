@@ -23,7 +23,7 @@ let askTvSerie = () => {
 
   let userSerieInJson = JSON.stringify(userSerie);
 
-  console.log(userSerieInJson);
+  return userSerieInJson;
 
 }
-askTvSerie();
+console.log(askTvSerie());
