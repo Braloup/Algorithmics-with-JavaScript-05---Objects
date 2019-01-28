@@ -1,56 +1,66 @@
-const readLineSync = require("readline-sync");
+/*
+**Create a function named randomizeCast(tvSerie) that will take as argument the data structure you defined
+**in the previous exercise and return a list of the same cast but in a random order.
+
+**Create a program that will use randomizeCast(tvSerie) and askTvSerie()
+**to ask the user about a TV serie then display a randomized list of
+**the previous cast that will form the new cast of your next serie.
+*/
+
+const readLineSync = require("readline-sync"); //Call the module for type input.
 
 let castMembers = [];
 
+// Function who ask user information about favorite TV serie's.
 let askTvSerie = () => {
-//Ask information to the user.
-  let name = readLineSync.question("Enter the name of your favorite TV serie: ");
-  let productYear = readLineSync.question("Enter the year in which your favorite series was produced: ");
+
+  let name = readLineSync.question("Enter the name of your favorite TV serie: "); // Input TV serie name's.
+  let productYear = readLineSync.question("Enter the year in which your favorite series was produced: "); // Input when TV serie ws product.
 
   let userAnswer;
-  // Do While loop, the user can put how many cast menter he wish.
+
   do {
-    let castMember = readLineSync.question("Enter a name of a cast member: ");
-    castMembers.push(castMember);
-    userAnswer = readLineSync.question("Do you want to add any some cast member? (yes or no): ")
+    let castMember = readLineSync.question("Enter a name of a cast member: "); // Input how many members cast the user wish(do while loop)
+    castMembers.push(castMember); // and push it in a array.
+
+    userAnswer = readLineSync.question("Do you want to add any some cast member? (yes or no): ");
+
   } while (userAnswer != "no");
-// Constucteur pour la class TVSérie.
+
+  // Constucteur pour la class TVSérie.
   function TvSerie(name, productYear, castMembers) {
     this.name = name;
     this.productYear = productYear;
     this.castMembers = castMembers;
   }
-// Create a new obect userSérie
-  let userSerie = new TvSerie(name, productYear, castMembers);
-// Convert objet to JSON file.
-  let userSerieInJson = JSON.stringify(userSerie);
-  // Callback of fonction randomizeCast.
-  console.log("A random aray with the cast Members" + randomizeCast(userSerie.castMembers));
+
+  let userSerie = new TvSerie(name, productYear, castMembers); // Create a new obect userSérie
+
+  let userSerieInJson = JSON.stringify(userSerie); // Convert objet to JSON file.
+
+  console.log("A random aray with the cast Members" + randomizeCast(userSerie.castMembers)); // Callback of fonction randomizeCast.
 
   return userSerieInJson;
-
 }
-
+// Funcion randomize th TV série cast members array.
 let randomizeCast = (castMembers) => {
 
-  let currentIndex = castMembers.length;
+  let currentIndex = castMembers.length; // Declare variable use for randomize the array.
+  let temporaryValue;
+  let randomIndex;
 
-  	let temporaryValue;
-    let randomIndex;
 
-  	// While there remain elements to shuffle.
-  	while (0 !== currentIndex) {
-  		// Pick a remaining element.
-  		randomIndex = Math.floor(Math.random() * currentIndex);
-  		currentIndex -= 1;
+  while (0 !== currentIndex) { // While there remain elements to shuffle.
 
-  		// And swap it with the current element.
-  		temporaryValue = castMembers[currentIndex];
-  		castMembers[currentIndex] = castMembers[randomIndex];
-  		castMembers[randomIndex] = temporaryValue;
-  	}
+    randomIndex = Math.floor(Math.random() * currentIndex); // Pick a remaining element.
+    currentIndex -= 1;
 
-  	return castMembers;
+    temporaryValue = castMembers[currentIndex]; // And swap it with the current element.
+    castMembers[currentIndex] = castMembers[randomIndex];
+    castMembers[randomIndex] = temporaryValue;
+  }
+
+  return castMembers;
 
 }
 

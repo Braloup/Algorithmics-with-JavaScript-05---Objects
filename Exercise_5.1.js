@@ -11,9 +11,10 @@
 
 const readLineSync = require("readline-sync"); //Call the module for type input.
 
+// Function who ask user information about favorite TV serie's.
+
 let askTvSerie = () => {
 
-  // Function who ask user information about favorite TV serie's.
   let castMembers = [];
 
   let name = readLineSync.question("Enter the name of your favorite TV serie: "); // Input TV serie name's.
@@ -25,7 +26,7 @@ let askTvSerie = () => {
     let castMember = readLineSync.question("Enter a name of a cast member: "); // Input how many members cast the user wish(do while loop)
     castMembers.push(castMember); // and push it in a array.
 
-    userAnswer = readLineSync.question("Do you want to add any some cast member? (yes or no): ")
+    userAnswer = readLineSync.question("Do you want to add any some cast member? (yes or no): ");
 
   } while (userAnswer != "no");
 
